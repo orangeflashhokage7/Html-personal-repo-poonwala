@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Table</title>
+</head>
+<body>
+
+  <button id="showTableButton">Show Employee Table</button>
+
+  <div id="tableContainer" style="display: none;">
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Position</th>
+        </tr>
+      </thead>
+      <tbody id="employeeTableBody">
+        <!-- Employee data will be dynamically added here -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    document.getElementById('showTableButton').addEventListener('click', showEmployeeTable);
+
+    function showEmployeeTable() {
+      const employees = [
+        { id: 1, name: 'John Doe', position: 'Software Engineer' },
+        { id: 2, name: 'Jane Doe', position: 'Graphic Designer' },
+        { id: 3, name: 'Bob Smith', position: 'Project Manager' },
+        { id: 4, name: 'Alice Johnson', position: 'Data Analyst' }
+      ];
+
+      const tableBody = document.getElementById('employeeTableBody');
+
+      // Clear existing rows
+      tableBody.innerHTML = '';
+
+      // Populate the table with employee data
+      employees.forEach(employee => {
+        const row = document.createElement('tr');
+        const idCell = document.createElement('td');
+        const nameCell = document.createElement('td');
+        const positionCell = document.createElement('td');
+
+        idCell.textContent = employee.id;
+        nameCell.textContent = employee.name;
+        positionCell.textContent = employee.position;
+
+        row.appendChild(idCell);
+        row.appendChild(nameCell);
+        row.appendChild(positionCell);
+
+        tableBody.appendChild(row);
+      });
+
+      // Display the table container
+      document.getElementById('tableContainer').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
